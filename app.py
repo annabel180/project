@@ -1,4 +1,6 @@
+pip install tensorflow
 import streamlit as st
+from tensorflow.keras.models import Sequential, model_from_json
 import tensorflow as tf
 import numpy as np
 from PIL import Image
