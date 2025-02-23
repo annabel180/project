@@ -1,14 +1,14 @@
 import streamlit as st
-from keras.models import load_model  # Keras standalone model loading
+import tensorflow as tf
 import numpy as np
 from PIL import Image
 
 # Load the trained model
 @st.cache_resource  # Cache the model to avoid reloading on every run
-def load_model_keras():
-    return load_model("model.h5")  # Update with your model path
+def load_model():
+    return tf.keras.models.load_model("model.keras")  # Update with your model path
 
-model = load_model_keras()
+model = load_model()
 
 # Define class labels (update based on your dataset)
 class_labels = ['hen', 'horse', 'cow']  # Replace with actual class names
