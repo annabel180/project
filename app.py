@@ -1,14 +1,14 @@
 import streamlit as st
-import tensorflow as tf
+from keras.models import load_model  # Keras standalone model loading
 import numpy as np
 from PIL import Image
 
 # Load the trained model
 @st.cache_resource  # Cache the model to avoid reloading on every run
-def load_model():
-    return tf.keras.models.load_model("model.keras")  # Update with your model path
+def load_model_keras():
+    return load_model("model.h5")  # Update with your model path
 
-model = load_model()
+model = load_model_keras()
 
 # Define class labels (update based on your dataset)
 class_labels = ['hen', 'horse', 'cow']  # Replace with actual class names
@@ -43,5 +43,3 @@ if uploaded_file is not None:
     st.write(" **Class Probabilities:**")
     for i, label in enumerate(class_labels):
         st.write(f"- {label}: {prediction[0][i]*100:.2f}%")
-
-  
